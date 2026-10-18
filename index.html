@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Phone-friendly viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top greeting -->
+    <header class="header">
+      <h1 class="greeting">Hello, have a nice day! 🌿</h1>
+      <p class="subtitle">Keep your messy daily notes organized by tag.</p>
+    </header>
+
+    <!-- Top filter bubbles -->
+    <nav id="filter-bubbles" class="bubbles-row" aria-label="Tag filters">
+      <!-- Tag bubbles are rendered here by JavaScript -->
+    </nav>
+
+    <!-- Controls to add another tag when tags already exist -->
+    <section id="add-tag-section" class="add-tag-section hidden">
+      <form id="add-tag-form" class="inline-tag-form">
+        <input
+          type="text"
+          id="tag-name-input"
+          class="text-input"
+          placeholder="New tag name (e.g. 📚 Homework)"
+          maxlength="30"
+          autocomplete="off"
+        >
+        <button type="submit" class="btn btn-primary">+ Add tag</button>
+      </form>
+    </section>
+
+    <!-- First-use screen (shown when there are no tags yet) -->
+    <section id="first-use-section" class="first-use-card">
+      <h2>Create your first tag</h2>
+      <p class="hint-text">Tags help you group your notes, like Shopping or Homework. Emojis are welcome!</p>
+      <form id="first-tag-form" class="first-tag-form">
+        <input
+          type="text"
+          id="first-tag-input"
+          class="text-input"
+          placeholder="e.g. 🛒 Shopping"
+          maxlength="30"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="btn btn-primary btn-large">Create tag</button>
+      </form>
+    </section>
+
+    <!-- Tag cards list -->
+    <main id="tag-cards-container" class="tag-cards-container">
+      <!-- Tag cards will be placed here -->
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

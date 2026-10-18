@@ -1,0 +1,325 @@
+/* Daily Notes - Soft pastel green theme and phone-friendly layout */
+
+:root {
+  --bg-color: #f4f8f5;
+  --card-bg: #ffffff;
+  --text-main: #23382b;
+  --text-muted: #627b6c;
+  --border-color: #dbe8df;
+  --primary: #3d7955;
+  --primary-hover: #326446;
+  --primary-soft: #eaf3ec;
+  --tag-bubble-bg: #ffffff;
+  --tag-bubble-active: #3d7955;
+  --danger-color: #b94a48;
+  --shadow: 0 4px 12px rgba(45, 90, 63, 0.06);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding: 16px 12px 60px;
+}
+
+/* One-column container designed for phone screens */
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header greeting */
+.header {
+  text-align: center;
+  padding: 12px 8px 4px;
+}
+
+.greeting {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Tag filter bubbles at top */
+.bubbles-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+.bubble {
+  border: 1px solid var(--border-color);
+  background-color: var(--tag-bubble-bg);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bubble.active {
+  background-color: var(--tag-bubble-active);
+  color: #ffffff;
+  border-color: var(--tag-bubble-active);
+}
+
+/* Section to add another tag */
+.add-tag-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  box-shadow: var(--shadow);
+}
+
+.inline-tag-form {
+  display: flex;
+  gap: 8px;
+}
+
+/* First-use card when no tags exist */
+.first-use-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.first-use-card h2 {
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.hint-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.first-tag-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* Inputs and buttons */
+.text-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #fafdfb;
+  outline: none;
+  min-height: 44px;
+}
+
+.text-input:focus {
+  border-color: var(--primary);
+  background-color: #ffffff;
+}
+
+.text-input::placeholder {
+  color: #9cb1a4;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-large {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.btn-subtle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-subtle:hover {
+  color: var(--danger-color);
+}
+
+/* Tag cards container */
+.tag-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual tag card */
+.tag-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tag-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--primary-soft);
+  padding-bottom: 8px;
+}
+
+.tag-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Note input section inside the tag card */
+.note-creator {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--primary-soft);
+  padding: 12px;
+  border-radius: var(--radius-md);
+}
+
+.note-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--text-main);
+  background-color: #ffffff;
+  resize: vertical;
+  min-height: 54px;
+  font-family: inherit;
+}
+
+.note-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.note-creator-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Note cards list inside the tag card */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-tag-hint {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 4px 0;
+}
+
+/* Individual note card */
+.note-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 6px;
+}
+
+.note-date {
+  font-size: 0.78rem;
+}
+
+.note-tag-badge {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Helper utilities */
+.hidden {
+  display: none !important;
+}

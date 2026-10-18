@@ -1,0 +1,10 @@
+.DS_Store
+
+# Personal learning context for this hackathon (not for default commits)
+/devpost/learner-profile.md
+
+# Local credentials; keep a secret-free example commitable
+.env
+.env.*
+!.env.example
+
