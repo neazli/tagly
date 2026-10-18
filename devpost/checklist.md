@@ -39,7 +39,7 @@ Build mode: fast mode
   Learner check: Add a homework note with a deadline a few days away and one that is today or past if you can, and confirm the English status text looks right.
   Commit: `Add optional deadlines and status text`
 
-- [ ] **4. You can tap All, a tag, or Deadline and see the right notes**
+- [x] **4. You can tap All, a tag, or Deadline and see the right notes**
   Becomes usable: Top bubbles: **All**, each tag, **Deadline**. Tap a tag → only that tag’s card. **Deadline** → only notes with a deadline, or the kind empty English message if none.
   Why now: This is the other half of the kernel (“the whole purpose”). It needs tags, notes, and deadlines already on screen so the demo is real, not last-minute chrome.
   PRD ref: `prd.md > Tap bubbles to see a category`, `prd.md > States and Boundaries` (empty Deadline)
