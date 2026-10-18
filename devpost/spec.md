@@ -154,6 +154,7 @@ README.md                # how to open locally + GitHub Pages link later
 
 ## External Services and Dependencies
 - **GitHub + GitHub Pages** — host code and the public app URL. Repository: [https://github.com/neazli/tagly](https://github.com/neazli/tagly). Pages URL: [https://neazli.github.io/tagly/](https://neazli.github.io/tagly/). No API keys. Free for a public repo. Docs: [GitHub Pages](https://docs.github.com/en/pages). Enable in repo Settings → Pages → Deploy from branch (root).
+- **Demo Video** — [https://youtu.be/zOwwfNGtPKM](https://youtu.be/zOwwfNGtPKM). Short screen walkthrough showing the proof of concept in action.
 - **Google Fonts** — loads the handwritten font **Caveat** for the Tagly title and **Nunito** for rounded text. Free public stylesheet with system fallbacks (`cursive`, `sans-serif`) if offline.
 - No other APIs. No paid plans.
 

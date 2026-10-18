@@ -4,6 +4,7 @@ A cute, soft web app for messy daily notes. Organize notes by tags, track deadli
 
 - **GitHub Repository**: [https://github.com/neazli/tagly](https://github.com/neazli/tagly)
 - **Live Demo (GitHub Pages)**: [https://neazli.github.io/tagly/](https://neazli.github.io/tagly/)
+- **Demo Video**: [https://youtu.be/zOwwfNGtPKM](https://youtu.be/zOwwfNGtPKM)
 
 ## How to Try Tagly Locally
 
