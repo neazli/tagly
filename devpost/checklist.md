@@ -9,7 +9,7 @@ Build mode: fast mode
 
 ## Slices
 
-- [ ] **1. You can create a tag and see its card on one soft English page that fits a phone**
+- [x] **1. You can create a tag and see its card on one soft English page that fits a phone**
   Becomes usable: Open the app in a browser, including a phone-sized window. First visit shows a kind English greeting and **Create your first tag**. After you create a tag (emoji allowed), its card appears with a place to write notes. Layout stays one column, readable, easy to tap.
   Why now: Slice 1 includes the real files (`index.html`, `styles.css`, `app.js`) plus the first usable behavior. Phone layout from the start so later slices do not sit on a desktop-only page. A tag card on screen is the start of the kernel (your own tags).
   PRD ref: `prd.md > The Core Journey` (steps 1–3), `prd.md > Create tags`, `prd.md > Screens and Layout`, `prd.md > Look and Feel`
@@ -19,7 +19,7 @@ Build mode: fast mode
   Learner check: Open the app, shrink the window to phone width (or use phone view), create a tag such as `🛒 Shopping`, and say whether it feels soft, clear, and usable on a small screen.
   Commit: `Add first-use page and create-tag cards`
 
-- [ ] **2. You can type a note in a tag card and it stays after refresh**
+- [x] **2. You can type a note in a tag card and it stays after refresh**
   Becomes usable: Type a note inside a tag card and see a note card (text, tag + emoji, small created date, edit/delete can wait). Refresh the browser: the tag and note are still there.
   Why now: Notes must exist before deadlines and filters. Saving now (`localStorage`) is a real risk (file:// vs server); catching it early is cheap, and later checks will not lose data.
   PRD ref: `prd.md > Write notes inside a tag card`, `prd.md > Note cards`, `prd.md > Stay saved`
@@ -61,7 +61,7 @@ Build mode: fast mode
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 2 (page, tags, notes, save): look and feel can still change remaining slices
+- [x] Early usable behavior explored — after slice 2 (page, tags, notes, save): look and feel can still change remaining slices
 - [ ] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
@@ -81,3 +81,6 @@ Reflection:
 Activity mode:
 
 ## Revisions
+
+- Refined look and feel based on learner feedback after slice 2: soft mint & cream background gradient, pill-shaped buttons and bubbles, very rounded cards, friendly Nunito font, cute emojis, and unique pastel colors for each tag card.
+- Updated layout and named app Tagly per learner request: app opens on "Home" bubble showing only two forms (add tag, write note with tag choice chips and deadline) without notes list. Next to Home are "All", tag bubbles, and "Deadline" showing clean note lists. Notes reveal edit/delete on tap. Tag deletion supported on active tag bubble.

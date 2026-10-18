@@ -2,61 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Phone-friendly viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Notes</title>
+  <title>Tagly</title>
+  <!-- Cute, rounded & handwritten fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="app-container">
-    <!-- Top greeting -->
+    <!-- Top header with Tagly name and kind message -->
     <header class="header">
-      <h1 class="greeting">Hello, have a nice day! 🌿</h1>
-      <p class="subtitle">Keep your messy daily notes organized by tag.</p>
+      <h1 class="app-title">Tagly</h1>
+      <p class="subtitle">Hello, have a nice day! 🌿</p>
     </header>
 
-    <!-- Top filter bubbles -->
-    <nav id="filter-bubbles" class="bubbles-row" aria-label="Tag filters">
-      <!-- Tag bubbles are rendered here by JavaScript -->
+    <!-- Navigation bubbles row: Home, All, tags, Deadline -->
+    <nav id="filter-bubbles" class="bubbles-row" aria-label="App navigation">
+      <!-- Bubbles are rendered by JavaScript -->
     </nav>
 
-    <!-- Controls to add another tag when tags already exist -->
-    <section id="add-tag-section" class="add-tag-section hidden">
-      <form id="add-tag-form" class="inline-tag-form">
-        <input
-          type="text"
-          id="tag-name-input"
-          class="text-input"
-          placeholder="New tag name (e.g. 📚 Homework)"
-          maxlength="30"
-          autocomplete="off"
-        >
-        <button type="submit" class="btn btn-primary">+ Add tag</button>
-      </form>
+    <!-- Screen 1: HOME (forms only, no notes list) -->
+    <section id="home-screen" class="screen-view">
+      <!-- First-use create tag (when no tags exist) -->
+      <div id="first-use-card" class="first-use-card">
+        <h2>🌱 Create your first tag ✨</h2>
+        <p class="hint-text">Tags help you group your notes, like 🛒 Shopping or 📚 Homework. Emojis make them extra cute! 🍓</p>
+        <form id="first-tag-form" class="first-tag-form">
+          <input
+            type="text"
+            id="first-tag-input"
+            class="text-input"
+            placeholder="e.g. 🛒 Shopping"
+            maxlength="30"
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="btn btn-primary btn-large">Create tag ✨</button>
+        </form>
+      </div>
+
+      <!-- Home controls (shown when at least one tag exists) -->
+      <div id="home-forms-wrapper" class="home-forms-wrapper hidden">
+        <!-- 1. Place to add a tag -->
+        <section class="add-tag-section">
+          <form id="add-tag-form" class="inline-tag-form">
+            <input
+              type="text"
+              id="tag-name-input"
+              class="text-input"
+              placeholder="New tag name (e.g. 📚 Homework)"
+              maxlength="30"
+              autocomplete="off"
+            >
+            <button type="submit" class="btn btn-primary">+ Add tag 🌸</button>
+          </form>
+        </section>
+
+        <!-- 2. Place to write a note -->
+        <section class="composer-card">
+          <form id="note-composer-form" class="composer-form">
+            <textarea
+              id="composer-text"
+              class="note-textarea"
+              placeholder="Write a note... 📝"
+              rows="3"
+              required
+            ></textarea>
+
+            <!-- Tag choices -->
+            <div class="composer-tags-group">
+              <span class="composer-label">Choose tag:</span>
+              <div id="composer-tag-chips" class="tag-chips-row">
+                <!-- Tag chips rendered here -->
+              </div>
+            </div>
+
+            <!-- Optional deadline & submit -->
+            <div class="composer-footer">
+              <div class="deadline-control-wrapper">
+                <button type="button" id="deadline-toggle-btn" class="btn btn-deadline">
+                  📅 Add deadline
+                </button>
+                <input type="date" id="composer-deadline-input" class="visually-hidden">
+                <button type="button" id="clear-deadline-btn" class="btn-clear-deadline hidden" title="Remove deadline">✕</button>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Add note ✨</button>
+            </div>
+          </form>
+        </section>
+      </div>
     </section>
 
-    <!-- First-use screen (shown when there are no tags yet) -->
-    <section id="first-use-section" class="first-use-card">
-      <h2>Create your first tag</h2>
-      <p class="hint-text">Tags help you group your notes, like Shopping or Homework. Emojis are welcome!</p>
-      <form id="first-tag-form" class="first-tag-form">
-        <input
-          type="text"
-          id="first-tag-input"
-          class="text-input"
-          placeholder="e.g. 🛒 Shopping"
-          maxlength="30"
-          autocomplete="off"
-          required
-        >
-        <button type="submit" class="btn btn-primary btn-large">Create tag</button>
-      </form>
-    </section>
+    <!-- Screen 2: NOTES VIEW (for All, Tag, or Deadline) -->
+    <section id="notes-screen" class="screen-view hidden">
+      <!-- Tag action banner (e.g. delete tag when a tag is active) -->
+      <div id="active-tag-banner" class="active-tag-banner hidden"></div>
 
-    <!-- Tag cards list -->
-    <main id="tag-cards-container" class="tag-cards-container">
-      <!-- Tag cards will be placed here -->
-    </main>
+      <!-- Clean list of notes -->
+      <main id="notes-container" class="notes-container">
+        <!-- Rendered notes go here -->
+      </main>
+    </section>
   </div>
 
   <script src="app.js"></script>

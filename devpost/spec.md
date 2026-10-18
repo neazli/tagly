@@ -3,10 +3,10 @@ doc: spec
 status: approved
 ---
 
-# Daily Notes — Technical Spec
+# Tagly — Technical Spec
 
 ## How This Works, In Plain Language
-The app is **one web page**. HTML is the structure (boxes on the screen). CSS is the look (soft green, rounded cards). JavaScript is the behavior (create a tag, save a note, tap a bubble).
+The app is **one web page** named **Tagly**. HTML is the structure (boxes on the screen). CSS is the look (soft pastel mint and cream, rounded cards). JavaScript is the behavior (create a tag, save a note, switch bubbles between Home, All, tags, and Deadline).
 
 When you type a tag or a note, JavaScript saves a copy in **`localStorage`**: a sticky note the **browser** keeps for this website on **this device**. When you open the page again, JavaScript reads that sticky note and draws the same tags and notes.
 
@@ -21,14 +21,17 @@ While we build, explanations of the code stay simple, in your words.
 ## The Core Journey Through the System
 PRD ref: `prd.md > The Core Journey`.
 
-1. User opens the page (local file during build, or the GitHub Pages link later) → browser loads `index.html`, `styles.css`, `app.js`.
-2. `app.js` reads `localStorage`. If empty → first-use screen: greeting + **Create your first tag**.
-3. User creates a tag → JavaScript adds it to the list in memory, **writes `localStorage`**, draws a tag bubble and a tag card with a note box inside.
-4. User types a note in that card, optional **📅 Add deadline** (`<input type="date">` on a phone) → JavaScript stores text, created date, optional deadline, **writes `localStorage`**, draws a note card.
-5. Deadline text is calculated when drawing: future → “N days left”; today → “Last day today”; past → “Time’s up”. Never a negative number.
-6. User taps **All** / a tag / **Deadline** → JavaScript only *shows* matching cards (data stays saved). Deadline with no matches → kind empty message.
-7. Edit/delete note, or delete tag (ask first if the tag has notes) → update the list, **write `localStorage`**, redraw.
-8. Close and reopen → read `localStorage` again → same data.
+1. User opens the page → browser loads `index.html`, `styles.css`, `app.js`.
+2. `app.js` reads `localStorage`. If empty → first-use screen on Home: greeting + **Create your first tag**.
+3. App opens on **Home**: shows only two forms:
+   - One place to add a tag.
+   - One place to write a note (note text, tag chips, optional 📅 deadline, Add note button). No notes list on Home.
+4. Top bubbles allow instant switching: **Home**, **All**, each tag (e.g. 🛒 Shopping), and **Deadline**.
+5. Tapping **All** shows all notes in one clean list with tag badges.
+6. Tapping a tag bubble shows only notes for that tag and a delete-tag button.
+7. Tapping **Deadline** shows only notes that have a deadline (or kind empty message if none).
+8. Tapping a note card reveals **Edit** and **Delete** options.
+9. Close and reopen → reads `localStorage` → same data preserved.
 
 ```
 User taps / types
@@ -83,28 +86,28 @@ PRD ref: `prd.md > Screens and Layout`, `prd.md > Look and Feel`.
 **Create your first tag** (and later a smaller add-tag control). Faded example `e.g. 🛒 Shopping`. No starter tags. After the last tag is deleted, this screen returns.
 PRD ref: `prd.md > Create tags`, `prd.md > States and Boundaries`.
 
-### Filter bubbles
-**All**, one bubble per tag, **Deadline**. Tapping filters what is visible. This is the product kernel on screen.
-PRD ref: `prd.md > Tap bubbles to see a category`.
+### Filter bubbles & tag actions
+**All**, one bubble per tag, **Deadline**. Tapping filters what is visible. When an active tag bubble is selected, an option to delete that tag is accessible.
+PRD ref: `prd.md > Tap bubbles to see a category`, `prd.md > Delete a tag`.
 
-### Tag card
-Tag name + emoji, small delete-tag control, empty hint (“Write your Shopping notes here”), note box **inside** the card, **📅 Add deadline** next to it, list of note cards.
-PRD ref: `prd.md > Create tags`, `prd.md > Write notes inside a tag card`, `prd.md > Delete a tag`.
+### Central note composer
+One single place to write a note. Contains text input, tag choice chips (user taps to choose the tag), optional **📅 Add deadline** button, and **Add note ✨**.
+PRD ref: `prd.md > Write notes in the note composer`, `prd.md > Optional deadline`.
 
 ### Deadline control
 Calendar button/label: “📅 Add deadline” until a date is chosen, then “📅 Oct 24” (or similar). Uses the phone-friendly date picker. Optional; skip = normal note.
 PRD ref: `prd.md > Optional deadline`.
 
 ### Note card
-Text, tag + emoji, small created date, deadline status, small Edit and Delete.
+Text, cute tag badge with emoji, small created date, deadline status. Cards are rounded and uncluttered (no permanent action buttons). Tapping a note reveals Edit and Delete actions.
 PRD ref: `prd.md > Note cards`.
 
 ### Edit and delete a note
-Edit text and deadline (add or remove). Delete removes the note everywhere (including Deadline view). Blank notes are not added.
+Tap a note card to reveal Edit and Delete. Edit opens in-place editing for text and deadline. Delete removes the note from the list and storage. Blank notes are not added.
 PRD ref: `prd.md > Edit and delete a note`.
 
 ### Delete-tag confirm
-Empty tag: delete immediately. Tag with notes: in-page kind question, e.g. “The notes in this tag will also be deleted. Are you sure?” Yes deletes tag + notes; No does nothing.
+When an active tag bubble is selected, delete tag is available. Empty tag: delete immediately. Tag with notes: in-page kind question, e.g. “The notes in this tag will also be deleted. Are you sure?” Yes deletes tag + notes; No does nothing.
 PRD ref: `prd.md > Delete a tag`.
 
 ### Deadline empty state
@@ -150,6 +153,7 @@ README.md                # how to open locally + GitHub Pages link later
 
 ## External Services and Dependencies
 - **GitHub + GitHub Pages** — host code and the public app URL. No API keys. Free for a public repo. Docs: [GitHub Pages](https://docs.github.com/en/pages). Enable in repo Settings → Pages → Deploy from branch (root). Exact username/repo URL is unknown until the public repo exists (`6-ship`).
+- **Google Fonts** — loads the handwritten font **Caveat** for the Tagly title and **Nunito** for rounded text. Free public stylesheet with system fallbacks (`cursive`, `sans-serif`) if offline.
 - No other APIs. No paid plans.
 
 ## Important Failure Modes

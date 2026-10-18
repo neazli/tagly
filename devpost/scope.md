@@ -3,7 +3,7 @@ doc: scope
 status: approved
 ---
 
-# Daily Notes
+# Tagly
 
 A simple web app for random short notes during the day: you write a note, pick your own tag, and the app groups it. If the note has a deadline, you see how many days are left. Anyone can use it—not only students.
 

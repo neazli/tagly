@@ -3,36 +3,53 @@ doc: prd
 status: approved
 ---
 
-# Daily Notes — Product Requirements
+# Tagly — Product Requirements
 
-A soft, one-page web app for anyone who takes messy daily notes: you create your own tags, write notes inside each tag’s card, and tap a bubble to see that category. Deadline notes show days left, **Last day today**, or **Time’s up**.
+A soft, cute web app for anyone who takes messy daily notes: you add tags, write notes picking a tag, and switch between Home, All, specific tags, and Deadline. Deadline notes show days left, **Last day today**, or **Time’s up**.
 Source: `scope.md > Who It's For`, `scope.md > The Unique Kernel`.
 
 ## The Core Journey
 Source: `scope.md > The Core Loop`, `scope.md > What "Working" Looks Like`.
 
-1. Open the web app on a computer or a phone. One page. Soft background. Kind line at the top, like “Hello, have a nice day!”, with a friendly emoji.
-2. First visit: no tags yet. One clear button: **Create your first tag**. The tag box shows a faded example, like `e.g. 🛒 Shopping`. No ready-made tags.
-3. After a tag is created (for example Shopping), its **tag card** appears on the page. Inside: a soft hint like “Write your Shopping notes here” and a **note box**.
-4. Type a note in that card. The app adds the created date. Optional: tap **📅 Add deadline**, pick a date; the button then shows that date (for example `📅 Oct 24`). No date means a normal note.
-5. Each note appears as a rounded card inside its tag: text, tag + emoji, small created date, deadline status if any (easy to see), small **Edit** and **Delete**.
-6. Add more tags the same way. Each new tag is a new card **below** the others. Scroll the page. If a tag name is wrong, **delete the tag**.
-7. At the top, bubbles: **All**, one bubble per tag, and **Deadline**. All shows every tag card. A tag bubble shows only that tag’s card and notes. Deadline shows only notes that have a deadline.
-8. Success in a short demo: two tags (for example Homework and Shopping), a shopping note with an auto date, a homework note with days left, tap bubbles to switch, edit and delete a note, delete a tag, close and reopen and the remaining data is still there.
+1. Open the web app on a computer or a phone. Name **Tagly** is at the top with a kind greeting like “✨ Tagly 🌸”.
+2. The app opens on the **Home** bubble. Home is the screen to add things: one place to add a tag, and one place to write a note (with tag choice chips and optional 📅 deadline). The Home screen shows only these two forms—no notes list.
+3. Top navigation bubbles: **Home**, **All**, one bubble for each tag (e.g. 🛒 Shopping), and **Deadline**.
+4. First visit: if no tags exist yet, Home shows **Create your first tag** with a faded example `e.g. 🛒 Shopping`.
+5. Once tags exist, user writes a note on Home, chooses its tag, adds an optional deadline, and taps **Add note ✨**.
+6. User taps **All** to see all notes in one list, each with its tag badge.
+7. User taps a tag bubble (like 🛒 Shopping) to see only notes for that tag, plus a simple control to delete the tag (empty tag deletes immediately; tag with notes asks first).
+8. User taps **Deadline** to see only notes that have an upcoming or past deadline.
+9. Tap on any note card to reveal **Edit** and **Delete** actions.
+10. Refresh/reopen: all data stays saved in `localStorage`.
 
 ## Screens and Layout
-One single page. Looks good and works well on a phone. Source: `scope.md > The POC Boundary`.
+One single page with soft bubble views. Looks good and works well on a phone. Source: `scope.md > The POC Boundary`.
 
 **Top**
-- Kind greeting + friendly emoji
-- Tag bubbles in a row (wrap on a small screen): **All**, each user tag, **Deadline**
-- A way to create a new tag (first visit: the big first-tag button; later: still possible to add another tag)
+- App name **Tagly** + kind greeting and friendly emojis
+- Top bubbles row: **Home**, **All**, each user tag, **Deadline**
 
-**Below, one tag card under another (scroll)**
-- Tag name with emoji, and a small **delete tag** control (for a wrong name)
-- Note box **inside** the card (a note typed here belongs to this tag)
-- Next to the note box: **📅 Add deadline**
-- Notes stacked inside the card as they are added
+**Home Screen (The app opens on Home)**
+- One place to add a tag (`+ Add tag 🌸`)
+- One place to write a note:
+  - Note text box: “Write a note... 📝”
+  - Small tag choice chips (tap to pick which tag it belongs to)
+  - **📅 Add deadline** button
+  - **Add note ✨** button
+- *No notes list on Home screen.*
+
+**"All" Screen**
+- Clean list of all notes, each showing: note text, tag badge, created date, deadline status
+- Tap note to reveal Edit / Delete
+
+**Tag Screens (e.g. 🛒 Shopping)**
+- Shows only notes belonging to that tag
+- Banner with tag name and option to **🗑️ Delete tag** (asks first if it has notes)
+- Tap note to reveal Edit / Delete
+
+**"Deadline" Screen**
+- Shows only notes that have a deadline
+- If no deadlines exist, shows kind empty message: “You have no deadlines right now 🌿✨”
 
 No extra pages. No side deadline list. No week strip in this version.
 
@@ -58,18 +75,18 @@ Anyone can create tags. No starter tags. Emojis allowed in the name. Each tag be
 ### Delete a tag
 In the first version, because a tag name can be typed wrong.
 
-- [ ] Each tag card has a small way to delete that tag
+- [ ] Available when a tag bubble is active
 - [ ] If the tag is empty, it is deleted right away (no question)
 - [ ] If the tag has notes, the app asks first, for example: “The notes in this tag will also be deleted. Are you sure?”
 - [ ] Only after yes: the tag, its bubble, and the notes inside it go away. No: nothing is deleted
 - [ ] If that was the last tag, the first-use screen returns (**Create your first tag**)
 - [ ] After delete, close and reopen: the deleted tag is still gone
 
-### Write notes inside a tag card
-The note box lives in the tag card, so the tag is already chosen. Source: `scope.md > The Core Loop`.
+### Write notes in the note composer
+One single place to write a note, choosing which tag it belongs to. Source: `scope.md > The Core Loop`.
 
-- [ ] Typing “Buy milk and eggs” in Shopping creates a note in that card with an app-set date
-- [ ] The note is not asked to pick a tag again
+- [ ] Typing note text and selecting a tag creates a note with an app-set date
+- [ ] Tag choices appear as small chips/buttons for each created tag
 - [ ] A blank note is not added
 
 ### Optional deadline
@@ -86,20 +103,22 @@ Source: `scope.md > The Unique Kernel`.
 ### Tap bubbles to see a category
 This is the purpose of the app. Source: `scope.md > The Unique Kernel`.
 
-- [ ] **All** shows every tag card and its notes
-- [ ] Tapping **Shopping** shows only the Shopping card and its notes
+- [ ] **All** shows all notes in one list, each with its tag badge
+- [ ] Tapping a tag bubble shows only notes for that tag
 - [ ] Tapping **Deadline** shows only notes that have a deadline (order of those notes is not important)
 - [ ] The page stays one screen, clean on a phone
 
 ### Note cards
-- [ ] Each card shows: note text; tag with emoji; small created date; deadline status if any; small Edit and Delete
-- [ ] Cards are rounded and uncluttered
+- [ ] Each card shows: note text; cute tag badge with emoji; small created date; deadline status if any
+- [ ] Cards are rounded, clean, and uncluttered
+- [ ] No permanent edit/delete buttons cluttering the card; tap the note to reveal actions
 
 ### Edit and delete a note
 Source: `scope.md > The POC Boundary`.
 
+- [ ] Tap a note to reveal Edit and Delete options
 - [ ] Edit can change the note text and the deadline (including adding or removing a deadline)
-- [ ] Delete removes the note from the card and from Deadline
+- [ ] Delete removes the note from the list and from Deadline
 - [ ] After edit or delete, the screen matches the new data
 
 ### Stay saved
