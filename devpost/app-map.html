@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tagly — App Map & Take-Home Guide</title>
+  <style>
+    :root {
+      --bg: #f4f8f5;
+      --card-bg: #ffffff;
+      --text: #233a2c;
+      --muted: #5e7d6b;
+      --primary: #3d7955;
+      --border: rgba(165, 208, 182, 0.4);
+      --soft: #eaf5ee;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px 60px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 12px 0 6px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(50, 95, 68, 0.04);
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--soft);
+      padding-bottom: 6px;
+    }
+    p, li {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    code {
+      background: var(--soft);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.88em;
+      color: var(--primary);
+    }
+    .diagram-box {
+      background: #fafdfb;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+      overflow-x: auto;
+    }
+    .route-stop {
+      background: #fafdfb;
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+    }
+    .route-stop strong {
+      color: var(--primary);
+    }
+    details {
+      margin-top: 10px;
+      background: var(--soft);
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    summary {
+      font-weight: 700;
+      color: var(--primary);
+      outline: none;
+    }
+    details[open] {
+      background: #ffffff;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌱 Tagly App Map</h1>
+      <p class="subtitle">A quick reference guide to how Tagly works and where each piece lives.</p>
+    </header>
+
+    <!-- Overview -->
+    <section class="card">
+      <h2>App Overview</h2>
+      <p><strong>Tagly</strong> is a phone-friendly, client-side web application for organizing daily notes by custom tags with deadline tracking. It requires no backend server or database—everything runs directly in the browser and persists using <code>localStorage</code>.</p>
+      <ul>
+        <li><code>index.html</code> — Semantic single-page HTML structure with views for Home (forms) and Notes lists.</li>
+        <li><code>styles.css</code> — Mobile-first CSS with soft mint and cream gradients, pill-shaped buttons, and rounded cards.</li>
+        <li><code>app.js</code> — Clean vanilla JavaScript managing state, local storage, tag routing, deadline calculation, and DOM updates.</li>
+        <li><code>favicon.svg</code> — Lightweight, self-contained SVG sprout icon for the browser tab.</li>
+      </ul>
+    </section>
+
+    <!-- Visual Journey Diagram -->
+    <section class="card">
+      <h2>How Data Flows Through Tagly</h2>
+      <p>When you type a note and choose a tag, here is how it moves through the code:</p>
+      <div class="diagram-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 180" style="width:100%; max-width:580px; height:auto; display:block; margin:0 auto;">
+          <!-- Step 1: Input -->
+          <rect x="10" y="25" width="150" height="60" rx="12" fill="#eaf5ee" stroke="#3d7955" stroke-width="1.5"/>
+          <text x="85" y="50" font-size="12" font-weight="bold" fill="#233a2c" text-anchor="middle">1. Home Composer</text>
+          <text x="85" y="68" font-size="11" fill="#5e7d6b" text-anchor="middle">Type note & pick tag</text>
+
+          <!-- Arrow 1 -->
+          <path d="M 160 55 L 200 55" stroke="#3d7955" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+          <!-- Step 2: app.js logic -->
+          <rect x="210" y="25" width="160" height="60" rx="12" fill="#eaf5ee" stroke="#3d7955" stroke-width="1.5"/>
+          <text x="290" y="50" font-size="12" font-weight="bold" fill="#233a2c" text-anchor="middle">2. app.js: addNote()</text>
+          <text x="290" y="68" font-size="11" fill="#5e7d6b" text-anchor="middle">Creates note object</text>
+
+          <!-- Arrow 2 down to storage -->
+          <path d="M 290 85 L 290 115" stroke="#3d7955" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+          <!-- Storage -->
+          <rect x="210" y="120" width="160" height="45" rx="10" fill="#fdfbf7" stroke="#e0cbb2" stroke-width="1.5"/>
+          <text x="290" y="142" font-size="11" font-weight="bold" fill="#7a542a" text-anchor="middle">localStorage["daily-notes"]</text>
+          <text x="290" y="156" font-size="10" fill="#7a542a" text-anchor="middle">JSON saved locally</text>
+
+          <!-- Arrow 3 to render -->
+          <path d="M 370 55 L 410 55" stroke="#3d7955" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+          <!-- Step 3: Render -->
+          <rect x="420" y="25" width="150" height="60" rx="12" fill="#eaf5ee" stroke="#3d7955" stroke-width="1.5"/>
+          <text x="495" y="50" font-size="12" font-weight="bold" fill="#233a2c" text-anchor="middle">3. renderNotes()</text>
+          <text x="495" y="68" font-size="11" fill="#5e7d6b" text-anchor="middle">Draws note cards</text>
+
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#3d7955"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Code Tour Route -->
+    <section class="card">
+      <h2>Reference Code Route</h2>
+      <p>Follow an action through three main locations in the code:</p>
+
+      <div class="route-stop">
+        <p><strong>Stop 1: Note Entry Form</strong> — <code>index.html > #note-composer-form</code> & <code>app.js > initApp()</code></p>
+        <p>Listens for form submission (or Ctrl+Enter keyboard shortcut), reads the chosen tag chip and optional date, and passes them to <code>addNote()</code>.</p>
+      </div>
+
+      <div class="route-stop">
+        <p><strong>Stop 2: State & Storage</strong> — <code>app.js > addNote()</code> & <code>app.js > saveState()</code></p>
+        <p>Constructs the note object with a unique ID, formatted creation date, and exact ISO timestamp, prepends it to <code>state.notes</code>, and serializes it to <code>localStorage</code>.</p>
+      </div>
+
+      <div class="route-stop">
+        <p><strong>Stop 3: Card Rendering & Deadline Calculation</strong> — <code>app.js > renderNotes()</code> & <code>app.js > computeDeadlineStatus()</code></p>
+        <p>Filters notes according to the active bubble view (All, Tag, or Deadline), calculates days left without timezone shifts, and builds the rounded note card DOM with tap-to-reveal edit/delete actions.</p>
+      </div>
+    </section>
+
+    <!-- To change this, start here -->
+    <section class="card">
+      <h2>To Change This, Start Here</h2>
+      <ul>
+        <li><strong>Change the default starting screen:</strong> In <code>app.js</code>, change <code>let currentFilter = "home";</code> to <code>"all"</code>.</li>
+        <li><strong>Add or adjust pastel tag colors:</strong> In <code>styles.css</code>, look for <code>.tag-card.pastel-*</code> and <code>.note-tag-badge</code>.</li>
+        <li><strong>Change deadline countdown phrasing:</strong> In <code>app.js > computeDeadlineStatus()</code>, adjust the returned strings (e.g. <code>"Last day today"</code> or <code>"Time's up"</code>).</li>
+      </ul>
+    </section>
+
+    <!-- A Practice to Reuse -->
+    <section class="card">
+      <h2>A Practice to Reuse</h2>
+      <p><strong>Plan visible boundaries before writing code:</strong></p>
+      <p>Specifying exact, observable behaviors ahead of time (such as treating calendar dates locally so zero days shows <em>"Last day today"</em> instead of negative numbers, and deciding that Home holds only forms while other bubbles display notes) gave us unambiguous verification checks. Every feature was tested and confirmed working immediately, avoiding architectural drift.</p>
+    </section>
+
+    <!-- How to run -->
+    <section class="card">
+      <h2>How to Run Tagly</h2>
+      <p>Double-click <code>index.html</code> in your file manager, or run a local static server:</p>
+      <pre><code>python3 -m http.server 8000</code></pre>
+      <p style="margin-top:8px;">Then visit <code>http://localhost:8000</code> in any web browser.</p>
+    </section>
+  </div>
+</body>
+</html>

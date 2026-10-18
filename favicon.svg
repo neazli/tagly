@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="20" fill="#edf6f0"/>
+  <!-- Soft subtle inner border -->
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="none" stroke="#b8dcbf" stroke-width="2"/>
+  <!-- Cute little sprout / leaf matching Tagly aesthetic -->
+  <path d="M32 48 C32 38 32 28 32 22 C32 14 40 10 47 11 C47 20 42 28 32 32" fill="#3d7955"/>
+  <path d="M32 34 C23 33 17 25 18 17 C26 17 31 22 32 26" fill="#6ba881"/>
+  <!-- Stem -->
+  <path d="M32 48 C32 38 32 28 32 22" fill="none" stroke="#2d5e41" stroke-width="3" stroke-linecap="round"/>
+</svg>

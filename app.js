@@ -144,11 +144,13 @@ function addNote(tagId, text, deadline = null) {
   const trimmed = text.trim();
   if (!trimmed) return null;
 
+  const now = new Date();
   const newNote = {
     id: "note-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
     tagId: tagId,
     text: trimmed,
-    createdAt: formatDisplayDate(),
+    createdAt: formatDisplayDate(now),
+    createdTimestamp: now.toISOString(),
     deadline: deadline || null
   };
 
@@ -404,7 +406,7 @@ function renderNotes() {
           <span class="note-tag-badge">${escapeHtml(tag.name)}</span>
           ${deadlineBadgeHtml}
         </div>
-        <span class="note-date">${escapeHtml(note.createdAt)}</span>
+        <span class="note-date">🌱 Added on ${escapeHtml(note.createdAt || 'today')}</span>
       </div>
       ${actionsDrawerHtml}
     `;

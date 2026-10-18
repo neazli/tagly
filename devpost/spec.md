@@ -99,7 +99,7 @@ Calendar button/label: “📅 Add deadline” until a date is chosen, then “�
 PRD ref: `prd.md > Optional deadline`.
 
 ### Note card
-Text, cute tag badge with emoji, small created date, deadline status. Cards are rounded and uncluttered (no permanent action buttons). Tapping a note reveals Edit and Delete actions.
+Text, cute tag badge with emoji, subtle created date (e.g. '🌱 Added on Oct 18, 2026'), deadline status. Cards are rounded and uncluttered (no permanent action buttons). Tapping a note reveals Edit and Delete actions.
 PRD ref: `prd.md > Note cards`.
 
 ### Edit and delete a note
@@ -127,7 +127,7 @@ One list in `localStorage` (JSON).
 
 **Tag:** `id`, `name` (may include emoji). Order = create order.
 
-**Note:** `id`, `tagId`, `text`, `createdAt` (date the app set), `deadline` (`null` or a `YYYY-MM-DD` date).
+**Note:** `id`, `tagId`, `text`, `createdAt` (exact date string e.g. "Oct 18, 2026"), `createdTimestamp` (exact ISO timestamp stored in `localStorage`), `deadline` (`null` or a `YYYY-MM-DD` date).
 
 - **Origin:** user typing on the page.
 - **Stored:** `localStorage` on this browser.
@@ -143,9 +143,10 @@ No accounts. No server copy.
 ```
 devpost/                 # learning docs (scope, prd, spec, profile)
 .agents/                 # course skills — not part of the app
-index.html               # one page: greeting, bubbles, tag cards
-styles.css               # soft green/white, rounded cards, phone layout
+index.html               # one page: greeting, bubbles, forms, notes
+styles.css               # soft mint/cream, rounded cards, phone layout
 app.js                   # tags, notes, filters, dates, localStorage
+favicon.svg              # cute pastel sprout favicon for browser tab
 README.md                # how to open locally + GitHub Pages link later
 ```
 

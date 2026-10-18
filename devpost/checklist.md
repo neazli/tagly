@@ -49,7 +49,7 @@ Build mode: fast mode
   Learner check: Create Homework and Shopping notes, tap each bubble, tap Deadline, and say whether the purpose (tap a tag, see that category) is clear.
   Commit: `Add All, tag, and Deadline filters`
 
-- [ ] **5. You can edit notes, delete notes, and delete a tag (ask first if it has notes)**
+- [x] **5. You can edit notes, delete notes, and delete a tag (ask first if it has notes)**
   Becomes usable: Edit a note’s text and deadline. Delete a note. Delete an empty tag with no question. Delete a tag that has notes only after the in-page question: “The notes in this tag will also be deleted. Are you sure?” Yes removes the tag and those notes; No leaves everything. Last tag gone → first-use screen again. English UI; phone layout already from slice 1.
   Why now: Kernel is already visible. These complete `prd.md > What We're Building` without delaying the proof.
   PRD ref: `prd.md > Edit and delete a note`, `prd.md > Delete a tag`
@@ -62,25 +62,26 @@ Build mode: fast mode
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — after slice 2 (page, tags, notes, save): look and feel can still change remaining slices
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence:
-Route and stops:
-Edit outcome:
-Reflection:
-Activity mode:
+Activity and evidence: Focused recap of planning-to-code workflow and observable acceptance criteria. Tested Home forms, All/Tag/Deadline views, deadline status phrases, tap-to-reveal edit/delete, date display, and custom SVG favicon.
+Route and stops: 1. Form submission (index.html > #note-composer-form, app.js > initApp) -> 2. State & localStorage (app.js > addNote, saveState) -> 3. Rendering & deadline calculation (app.js > renderNotes, computeDeadlineStatus).
+Edit outcome: Safe iterations completed during review (pastel palette, handwritten Caveat title, created date badge '🌱 Added on Oct 18, 2026', and favicon.svg).
+Reflection: Covered interactively across checkpoints.
+Activity mode: Focused recap and app-map.html take-home guide.
 
 ## Revisions
 
 - Refined look and feel based on learner feedback after slice 2: soft mint & cream background gradient, pill-shaped buttons and bubbles, very rounded cards, friendly Nunito font, cute emojis, and unique pastel colors for each tag card.
 - Updated layout and named app Tagly per learner request: app opens on "Home" bubble showing only two forms (add tag, write note with tag choice chips and deadline) without notes list. Next to Home are "All", tag bubbles, and "Deadline" showing clean note lists. Notes reveal edit/delete on tap. Tag deletion supported on active tag bubble.
+- Adjusted note details per learner request: each note displays its exact creation date with cute subtle styling ('🌱 Added on Oct 18, 2026'), and stores an exact ISO creation timestamp in localStorage.
