@@ -29,7 +29,7 @@ Build mode: fast mode
   Learner check: Add “Buy milk and eggs” under Shopping, refresh the page, and confirm the note is still there.
   Commit: `Add in-card notes and localStorage`
 
-- [ ] **3. A note can have a deadline with days left, Last day today, or Time's up**
+- [x] **3. A note can have a deadline with days left, Last day today, or Time's up**
   Becomes usable: Next to the note box, **📅 Add deadline**. After a date, the note shows **N days left**, **Last day today** (deadline is today), or **Time's up** (already past). Never a negative number.
   Why now: This is half of the unique kernel. Date math is easy to get wrong, so it comes before extra UI.
   PRD ref: `prd.md > Optional deadline`, `prd.md > States and Boundaries`
