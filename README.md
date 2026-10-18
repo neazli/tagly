@@ -2,6 +2,9 @@
 
 A cute, soft web app for messy daily notes. Organize notes by tags, track deadlines easily, and switch smoothly between Home, All, your tags, and Deadlines.
 
+- **GitHub Repository**: [https://github.com/neazli/tagly](https://github.com/neazli/tagly)
+- **Live Demo (GitHub Pages)**: [https://neazli.github.io/tagly/](https://neazli.github.io/tagly/)
+
 ## How to Try Tagly Locally
 
 ### Option 1: Double-click (Quick)
