@@ -177,9 +177,20 @@ function renderTagCards() {
 
     // Attach event listener for adding notes
     const form = card.querySelector(".note-creator");
+    const textarea = form.querySelector(".note-input");
+
+    // Allow Ctrl+Enter or Cmd+Enter to quickly submit note
+    if (textarea) {
+      textarea.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event("submit", { cancelable: true }));
+        }
+      });
+    }
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const textarea = form.querySelector(".note-input");
       if (textarea) {
         addNote(tag.id, textarea.value);
         textarea.value = "";
